@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポロドーモタイマー with 作業 | Pomodoro Timer with Task </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>ポロドーモタイマー with 作業</h1>
+            <p class="subtitle">Pomodoro Timer with Task</p>
+        </header>
+
+        <main>
+            <!-- タイマーセクション -->
+            <section id="timer-section" class="card main-card">
+                <div class="active-task-label" id="current-task-display">NO ACTIVE TASK</div>
+                <div class="task-separator">-</div>
+                <div id="timer-display" class="timer-text">00:00:00</div>
+                <div class="timer-controls">
+                    <button id="start-btn" class="btn btn-primary">開始</button>
+                    <button id="stop-btn" class="btn btn-secondary" disabled>終了</button>
+                    <button id="reset-btn" class="btn btn-outline">リセット</button>
+                </div>
+                <div class="timer-settings">
+                    <div class="setting-group">
+                        <label for="work-duration">作業 (分)</label>
+                        <input type="number" id="work-duration" value="25" min="1">
+                    </div>
+                    <div class="setting-group">
+                        <label for="break-duration">休憩 (分)</label>
+                        <input type="number" id="break-duration" value="5" min="1">
+                    </div>
+                </div>
+            </section>
+
+            <!-- タスク追加セクション -->
+            <section id="task-input-section" class="card">
+                <div class="input-group">
+                    <input type="text" id="task-input" placeholder="新しい作業名を入力 (例: デザイン, 実装)..." aria-label="タスク名">
+                    <button id="add-task-btn" class="btn btn-accent">追加</button>
+                </div>
+                <div id="task-list" class="task-grid">
+                    <!-- タスクがここに追加されます -->
+                </div>
+            </section>
+
+            <!-- グラフ・分析セクション -->
+            <section id="analytics-section" class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-range="today">今日</button>
+                    <button class="tab-btn" data-range="week">今週</button>
+                    <button class="tab-btn" data-range="month">今月</button>
+                    <button class="tab-btn" data-range="year">今年</button>
+                    <button class="tab-btn" data-range="all">全期間</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="timeChart"></canvas>
+                </div>
+                <div class="summary-footer">
+                    合計作業時間: <span id="total-worked-time">0時間 0分</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="sound-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="sound-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span>通知音: ON</span>
+            </div>
+            <p>&copy; 2026 Pomodoro Timer with Task</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
