@@ -1,0 +1,363 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-cyan: #00f2fe;
+    --accent-purple: #b162ff;
+    --accent-pink: #ff6b81;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-main: 'Outfit', 'Noto Sans JP', sans-serif;
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    margin-bottom: 0.2rem;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.2em;
+    font-weight: 300;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+}
+
+/* タイマーセクション */
+.main-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.active-task-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.task-separator {
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+}
+
+.timer-text {
+    font-size: 5rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    margin: 1rem 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-cyan);
+    color: var(--bg-color);
+}
+
+.btn-secondary {
+    background-color: var(--accent-purple);
+    color: white;
+}
+
+.btn-accent {
+    background-color: var(--accent-purple);
+    color: white;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.timer-settings {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-group label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.setting-group input {
+    background: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 0.4rem;
+    border-radius: 4px;
+    width: 60px;
+    text-align: center;
+}
+
+/* タスク入力セクション */
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#task-input {
+    flex: 1;
+    background: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#task-input::placeholder {
+    color: #666;
+}
+
+.task-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.task-item {
+    background: #252525;
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.task-item.active {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.task-item span {
+    font-size: 0.9rem;
+}
+
+.btn-delete-task {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-delete-task:hover {
+    color: var(--accent-pink);
+}
+
+/* 分析セクション */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    background: #252525;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: var(--accent-cyan);
+    color: var(--bg-color);
+}
+
+.chart-container {
+    padding: 1rem;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+.summary-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 600;
+}
+
+#total-worked-time {
+    color: var(--accent-cyan);
+}
+
+/* フッター・サウンド切り替え */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    padding-bottom: 1rem;
+}
+
+.sound-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* スイッチのデザイン */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #444;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--accent-cyan);
+}
+
+input:checked+.slider:before {
+    transform: translateX(14px);
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    .timer-text {
+        font-size: 3.5rem;
+    }
+
+    .timer-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+}
